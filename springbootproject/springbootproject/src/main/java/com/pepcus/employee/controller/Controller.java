@@ -11,41 +11,46 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.pepcus.employee.modal.Employee;
-import com.pepcus.employee.service.EmployeeSrvice;
+import com.pepcus.employee.service.EmployeeService;
 
 @RestController
-@RequestMapping(value = "/Empl")
+@RequestMapping(value = "/employees")
 public class Controller {
 	@Autowired
-	EmployeeSrvice employeeservice;
+	EmployeeService employeeService;
 
-	@PostMapping("/insert")
+	@PostMapping("/")
 	public Employee insertEmployee(@RequestBody Employee employee) {
-		Employee emp = employeeservice.insertEmployee(employee);
-		return emp;
+		Employee employeeResponse = employeeService.insertEmployee(employee);
+		return employeeResponse;
 	}
 
-	@GetMapping("/allEmployee")
+	@GetMapping("/")
 	public List<Employee> getAllEmployee() {
-		List<Employee> employee = employeeservice.getAllEmployee();
+		List<Employee> employee = employeeService.getAllEmployee();
 		System.out.println(employee);
 		return employee;
 	}
 
-	@PutMapping("/update")
+	@PutMapping("/{id}")
 	public Employee updateEmployee(@RequestBody Employee employee) {
-		Employee Emp = employeeservice.insertEmployee(employee);
+		Employee employee1 = employeeService.updateEmployee(employee);
 		System.out.println(employee);
-		return Emp;
+		return employee1;
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public String getDeleteEmployeeById(@PathVariable("id") int id) {
 		System.out.println("book id-->" + id);
-		String successfull = employeeservice.getDeleteEmployeeById(id);
+		String successfull = employeeService.getDeleteEmployeeById(id);
 		return successfull;
 	}
+	@GetMapping("/findAllOrderByName")
+	public List<Employee> findAllOrderByNameAsc() {
+		
+		return employeeService.findAllOrderByNameAsc();
+	}
 
+	
 }
