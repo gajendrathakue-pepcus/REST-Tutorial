@@ -2,7 +2,10 @@ package com.pepcus.employee.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.pepcus.employee.modal.Employee;
+import com.pepcus.employee.repository.EmployeeRepository;
 import com.pepcus.employee.service.EmployeeService;
 
 @RestController
@@ -20,6 +24,7 @@ import com.pepcus.employee.service.EmployeeService;
 public class Controller {
   @Autowired
   EmployeeService employeeService;
+  EmployeeRepository employeeRepository;
 
   @PostMapping("/")
   public Employee insertEmployee(@RequestBody Employee employee) {
@@ -54,10 +59,16 @@ public class Controller {
     return employeeService.findAllOrderByNameAsc();
   }
 
-  @GetMapping("/filterByName")
-  public List<Employee> filterByName(@RequestParam(value = "name", required = false) String name) {
+  @GetMapping("/filterByDepartment")
+  public List<Employee> filterByDepartment(@RequestParam(value = "department", required = false) String department) {
 
-    return employeeService.filterByName(name);
+    return employeeService.filterByDepartment(department);
+  }
+  
+  @GetMapping("/employeePageable")
+   Page employeePageable(Pageable pageab) {
+
+    return employeeRepository.findAll(pageab);
   }
 
 }

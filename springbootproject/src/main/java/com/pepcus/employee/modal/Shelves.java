@@ -1,8 +1,11 @@
 package com.pepcus.employee.modal;
 
+
+
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
-
+import com.pepcus.employee.modal.Book;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,22 +18,19 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
 @Entity
-@Table(name = "Employee")
+@Table(name = "Shelves")
 @Setter
 @Getter
 @AllArgsConstructor
-public class Employee {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int employeeid;
-	private String name;
-	private String email;
-	private String phoneno;
-	private String department;
-
+public class Shelves {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
+  private String name;
   @OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "employeeid")
-	private List<Address> address;
+  @JoinColumn
+  private List<Book> books = new ArrayList<>();
 
 }

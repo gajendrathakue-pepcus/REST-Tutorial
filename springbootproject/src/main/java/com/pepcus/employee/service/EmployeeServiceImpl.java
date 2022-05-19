@@ -2,6 +2,8 @@ package com.pepcus.employee.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.pepcus.employee.modal.Employee;
@@ -9,12 +11,13 @@ import com.pepcus.employee.repository.AddressRepository;
 import com.pepcus.employee.repository.EmployeeRepository;
 
 @Service
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
   @Autowired
   EmployeeRepository employeeRepository;
   @Autowired
   AddressRepository addressrepository;
-
+ 
   @Override
   public Employee insertEmployee(Employee employee) {
     employeeRepository.save(employee);
@@ -51,9 +54,9 @@ public class EmployeeServiceImpl implements EmployeeService {
   }
 
   @Override
-  public List<Employee> filterByName(String name) {
+  public List<Employee> filterByDepartment(String department) {
 
-    return employeeRepository.filterByName(name);
+    return employeeRepository.filterByDepartment(department);
   }
 
 }

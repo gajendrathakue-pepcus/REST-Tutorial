@@ -1,7 +1,9 @@
 package com.pepcus.employee.modal;
 
-import javax.persistence.Entity;
+import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,21 +12,19 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+
 @Entity
-@Table(name = "Address")
+@Table(name = "Book")
 @Setter
 @Getter
 @AllArgsConstructor
-@ToString
-public class Address {
+public class Book {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Integer address_id;
-  private String street1;
-  private String street2;
-  private String city;
-  private String state;
-  private String country;
+  private int bookId;
+  private String name;
+  private Date addedOn;
+  private Date modifiedOn;
+  private Date deletedOn;
 
 }
