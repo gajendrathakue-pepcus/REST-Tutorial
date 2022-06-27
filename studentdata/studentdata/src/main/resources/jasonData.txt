@@ -1,0 +1,98 @@
+JASON FOEMATE
+===============//================
+ postmapping for saveStudent  ==>>
+
+url = http://localhost:8080/students/add
+
+  {
+    
+    "name": "gajen",
+    "city": "Bhopal",
+    "standard":"9",
+    "email":"gajhen@gmail.com"
+}
+============>>>=====================
+postmapping for CsV ==>>
+http://localhost:8080/students/file?file
+[
+    {
+        "id": 1,
+        "day": 21,
+        "isPresent": "true",
+        "student_id": 1
+    },
+    {
+        "id": 2,
+        "day": 30,
+        "isPresent": "false",
+        "student_id": 2
+    },
+    {
+        "id": 2,
+        "day": 30,
+        "isPresent": "false",
+        "student_id": 2
+    },
+    {
+        "id": 19,
+        "day": 12,
+        "isPresent": "true",
+        "student_id": 19
+    }
+]
+===============//================
+getmapping for filterStudent
+url == http://localhost:8080/students/filterbydays
+[
+    {
+        "id": 2,
+        "name": "gajeon",
+        "city": "Bhopal",
+        "standard": 9,
+        "email": "gajhen@gmail.com"
+    }
+]
+====================//==============
+getmapping for student which belong to ujjain
+url ==>> http://localhost:8080/students/getstudent
+ {
+        "id": 19,
+        "name": "radha",
+        "city": "ujjain",
+        "standard": 12,
+        "email": "raxfju6@gmail.com"
+    }
+===============>>>>>>>>>====================
+getmapping for get all student
+url ==>> http://localhost:8080/students/
+[
+    {
+        "id": 2,
+        "name": "gajeon",
+        "city": "Bhopal",
+        "standard": 9,
+        "email": "gajhen@gmail.com"
+    },
+    {
+        "id": 19,
+        "name": "radha",
+        "city": "ujjain",
+        "standard": 12,
+        "email": "raxfju6@gmail.com"
+    },
+    {
+        "id": 20,
+        "name": "Sonu Thakur",
+        "city": "indore",
+        "standard": 10,
+        "email": "sonu@gmail.com"
+    },
+    {
+        "id": 21,
+        "name": "gajen",
+        "city": "Bhopal",
+        "standard": 9,
+        "email": "gajen@gmail.com"
+    }
+]
+============>>>>>>>>>>==========================
